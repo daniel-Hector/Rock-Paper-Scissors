@@ -57,14 +57,14 @@ function playGame() {
             userWins++;
         } else if(check2 === 'You loose') {
             computerWins++;
-        } else {
-            console.log('conditions not conditioning');
         }
     }
 
     if(userWins > computerWins) {
         return `Congratualions, you win! Scoreboard: player ${userWins} computer ${computerWins}`;
+    } else if(userWins < computerWins) {
+        return `Sorry, you loose. Scoreboard: player ${userWins} computer ${computerWins}`;
     } else {
-        return `Sorry, you loose. Scoreboard: player ${userWins} computer ${computerWins}`
+        `Tie! Scoreboard play ${userWins} computer ${computerWins}`;
     }
 }
