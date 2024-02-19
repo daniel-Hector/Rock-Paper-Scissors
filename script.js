@@ -65,6 +65,6 @@ function playGame() {
     } else if(userWins < computerWins) {
         return `Sorry, you loose. Scoreboard: player ${userWins} computer ${computerWins}`;
     } else {
-        `Tie! Scoreboard play ${userWins} computer ${computerWins}`;
+        `Tie! Scoreboard player ${userWins} computer ${computerWins}`;
     }
 }
