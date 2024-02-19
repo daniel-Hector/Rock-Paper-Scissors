@@ -19,3 +19,11 @@ function getComputerChoice() {
     }
     return choice;
 }
+
+function getUserChoice() {
+    let userChoice = prompt("Rock, Paper, Scissors? ")
+    userChoice = userChoice.toLowerCase();
+    userChoice = userChoice[0].toUpperCase() + userChoice.slice(1);
+    return userChoice;
+}
+
