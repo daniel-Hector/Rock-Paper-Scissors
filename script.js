@@ -46,15 +46,19 @@ function playRound(computerSelection, userSelection) {
 }
 
 function playGame() {
-    let userWins;
-    let computerWins;
+    let userWins = 0;
+    let computerWins = 0;
     for(let x = 5; 1 <= x; x--) {
         let result = playRound(getComputerChoice(), getUserChoice());
         console.log(result);
-        if(result.slice(0, 6) === 'You win') {
+        check1 = result.slice(0, 7);
+        check2 = result.slice(0, 9);
+        if(check1 === 'You win') {
             userWins++;
-        } else if(result.slice(0, 8) === 'You loose') {
+        } else if(check2 === 'You loose') {
             computerWins++;
+        } else {
+            console.log('conditions not conditioning');
         }
     }
 
