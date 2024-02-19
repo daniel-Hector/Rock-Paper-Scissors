@@ -27,3 +27,40 @@ function getUserChoice() {
     return userChoice;
 }
 
+function playRound(computerSelection, userSelection) {
+    if(computerSelection === userSelection) {
+        return `Tie! ${computerSelection} vs ${userSelection}`;
+    } else if(computerSelection === 'Rock' && userSelection === 'Paper') {
+        return 'You win! Paper beats Rock'
+    } else if(computerSelection === 'Paper' && userSelection === 'Rock') {
+        return 'You loose! Paper beats Rock'
+    } else if(computerSelection === 'Scissors' && userSelection === 'Rock') {
+        return 'You win! Rock beats Scissors'
+    } else if(computerSelection === 'Rock' && userSelection === 'Scissors') {
+        return 'You loose! Rock beats Scissors'
+    } else if (computerSelection === 'Paper' && userSelection === 'Scissors') {
+        return 'You win! Scissors beats Paper'
+    } else if(computerSelection === 'Scissors' && userSelection === 'Paper') {
+        return 'You loose! Scissors beats Paper'
+    }
+}
+
+function playGame() {
+    let userWins;
+    let computerWins;
+    for(let x = 5; 1 <= x; x--) {
+        let result = playRound(getComputerChoice(), getUserChoice());
+        console.log(result);
+        if(result.slice(0, 6) === 'You win') {
+            userWins++;
+        } else if(result.slice(0, 8) === 'You loose') {
+            computerWins++;
+        }
+    }
+
+    if(userWins > computerWins) {
+        return `Congratualions, you win! Scoreboard: player ${userWins} computer ${computerWins}`;
+    } else {
+        return `Sorry, you loose. Scoreboard: player ${userWins} computer ${computerWins}`
+    }
+}
