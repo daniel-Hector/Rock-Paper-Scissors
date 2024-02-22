@@ -45,3 +45,11 @@ body {
     font-weight: bolder;
     font-size: 20px;
 }
+
+.roundResult {
+    height: 280px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
