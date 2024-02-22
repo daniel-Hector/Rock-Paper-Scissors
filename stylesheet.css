@@ -1,0 +1,47 @@
+body {
+    background-color: grey;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.rock,
+.paper,
+.scissors {
+  border: solid;
+  border-radius: 8px;
+  border-color: white;
+  text-align: center;
+  padding: 10px;
+  width: 100px;
+  color: white;
+  font-weight: 700;
+}
+
+.results {
+    width: 250px;
+    height: 300px;
+    border-radius: 15px;
+    background-color: rgba(211, 211, 211, 0.279);
+}
+
+.paper {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.score {
+    justify-content: center;
+    border-bottom: solid;
+    border-color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 20px;
+}
