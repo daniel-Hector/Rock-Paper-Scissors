@@ -1,5 +1,4 @@
-// helper function
-const randomNum = () => {
+function randomNum() {
     /* generates random number between 1 and 3 */ 
     let number = Math.floor(Math.random() * 3) + 1;
 
@@ -26,6 +25,11 @@ function logResult(textToLog) {
     span.innerText = textToLog;
 }
 
+function updateScore(playerWins, computerWins) {
+    const score = document.querySelector('.score');
+    score.innerText = `Player ${playerWins} Computer ${computerWins}`;
+}
+
 let playerWins = 0;
 let computerWins = 0;
 function playRound(userSelection) {
@@ -37,21 +41,27 @@ function playRound(userSelection) {
         } else if(computerSelection === 'rock' && userSelection === 'paper') {
             logResult('You win! Paper beats Rock');
             playerWins++;
+            updateScore(playerWins, computerWins);
         } else if(computerSelection === 'paper' && userSelection === 'rock') {
             logResult('You loose! Paper beats Rock');
             computerWins++;
+            updateScore(playerWins, computerWins);
         } else if(computerSelection === 'scissors' && userSelection === 'rock') {
             logResult('You win! Rock beats Scissors');
             playerWins++;
+            updateScore(playerWins, computerWins);
         } else if(computerSelection === 'rock' && userSelection === 'scissors') {
             logResult('You loose! Rock beats Scissors');
             computerWins++;
+            updateScore(playerWins, computerWins);
         } else if (computerSelection === 'paper' && userSelection === 'scissors') {
             logResult('You win! Scissors beats Paper');
             playerWins++;
+            updateScore(playerWins, computerWins);
         } else if(computerSelection === 'scissors' && userSelection === 'paper') {
             logResult('You loose! Scissors beats Paper');
             computerWins++;
+            updateScore(playerWins, computerWins);
         }
     } else if(playerWins === 5) {
         alert('You Win!');
