@@ -9,40 +9,14 @@ const randomNum = () => {
 function getComputerChoice() {
     let choice;
     switch(randomNum()) {
-        case 1: choice = "Rock";
+        case 1: choice = "rock";
         break;
-        case 2: choice = "Paper";
+        case 2: choice = "paper";
         break;
-        case 3: choice = "Scissors";
+        case 3: choice = "scissors";
         break;
-        default: choice = "oops, something went wrong";
     }
     return choice;
-}
-
-function getUserChoice() {
-    let userChoice = prompt("Rock, Paper, Scissors? ")
-    userChoice = userChoice.toLowerCase();
-    userChoice = userChoice[0].toUpperCase() + userChoice.slice(1);
-    return userChoice;
-}
-
-function playRound(computerSelection, userSelection) {
-    if(computerSelection === userSelection) {
-        return `Tie! ${computerSelection} vs ${userSelection}`;
-    } else if(computerSelection === 'Rock' && userSelection === 'Paper') {
-        return 'You win! Paper beats Rock'
-    } else if(computerSelection === 'Paper' && userSelection === 'Rock') {
-        return 'You loose! Paper beats Rock'
-    } else if(computerSelection === 'Scissors' && userSelection === 'Rock') {
-        return 'You win! Rock beats Scissors'
-    } else if(computerSelection === 'Rock' && userSelection === 'Scissors') {
-        return 'You loose! Rock beats Scissors'
-    } else if (computerSelection === 'Paper' && userSelection === 'Scissors') {
-        return 'You win! Scissors beats Paper'
-    } else if(computerSelection === 'Scissors' && userSelection === 'Paper') {
-        return 'You loose! Scissors beats Paper'
-    }
 }
 
 function logResult(textToLog) {
@@ -52,29 +26,42 @@ function logResult(textToLog) {
     span.innerText = textToLog;
 }
 
-function playGame() {
-    let userWins = 0;
-    let computerWins = 0;
-
+let playerWins = 0;
+let computerWins = 0;
+function playRound(userSelection) {
+    let computerSelection = getComputerChoice();
     
-    while(userWins != 5 || computerWins != 5) {
-        let result = playRound(getComputerChoice(), getUserChoice());
-        console.log(result);
-        logResult(result);
-        check1 = result.slice(0, 7);
-        check2 = result.slice(0, 9);
-        if(check1 === 'You win') {
-            userWins++;
-        } else if(check2 === 'You loose') {
+    if(playerWins != 5 || computerWins != 5) {
+        if(computerSelection === userSelection) {
+            logResult(`Tie! ${computerSelection} vs ${userSelection}`);
+        } else if(computerSelection === 'rock' && userSelection === 'paper') {
+            logResult('You win! Paper beats Rock');
+            playerWins++;
+        } else if(computerSelection === 'paper' && userSelection === 'rock') {
+            logResult('You loose! Paper beats Rock');
+            computerWins++;
+        } else if(computerSelection === 'scissors' && userSelection === 'rock') {
+            logResult('You win! Rock beats Scissors');
+            playerWins++;
+        } else if(computerSelection === 'rock' && userSelection === 'scissors') {
+            logResult('You loose! Rock beats Scissors');
+            computerWins++;
+        } else if (computerSelection === 'paper' && userSelection === 'scissors') {
+            logResult('You win! Scissors beats Paper');
+            playerWins++;
+        } else if(computerSelection === 'scissors' && userSelection === 'paper') {
+            logResult('You loose! Scissors beats Paper');
             computerWins++;
         }
-    }
-
-    if(userWins > computerWins) {
-        return `Congratualions, you win! Scoreboard: player ${userWins} computer ${computerWins}`;
-    } else if(userWins < computerWins) {
-        return `Sorry, you loose. Scoreboard: player ${userWins} computer ${computerWins}`;
-    } else {
-        `Tie! Scoreboard player ${userWins} computer ${computerWins}`;
+    } else if(playerWins === 5) {
+        alert('You Win!');
+    } else if(computerWins === 5) {
+        alert('You Loose');
     }
 }
+
+const buttons = document.querySelector('.gameOptions');
+buttons.addEventListener('click', (event) => {
+    let userSelection = event.target.getAttribute('class');
+    playRound(userSelection)
+});
