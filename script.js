@@ -45,12 +45,22 @@ function playRound(computerSelection, userSelection) {
     }
 }
 
+function logResult(textToLog) {
+    const roundResult = document.querySelector('.roundResult');
+    const span = document.createElement('span');
+    roundResult.appendChild(span);
+    span.innerText = textToLog;
+}
+
 function playGame() {
     let userWins = 0;
     let computerWins = 0;
-    for(let x = 5; 1 <= x; x--) {
+
+    
+    while(userWins != 5 || computerWins != 5) {
         let result = playRound(getComputerChoice(), getUserChoice());
         console.log(result);
+        logResult(result);
         check1 = result.slice(0, 7);
         check2 = result.slice(0, 9);
         if(check1 === 'You win') {
