@@ -53,7 +53,7 @@ body {
 }
 
 .roundResult {
-    height: 280px;
+    height: 250px;
     margin-left: 10px;
     display: flex;
     flex-direction: column;
